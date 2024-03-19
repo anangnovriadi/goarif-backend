@@ -15,7 +15,7 @@ const sequelize = new Sequelize(name, username, password, {
         useUTC: false,
     },
     timezone: '+07:00',
-    logging: console.log,
+    // logging: console.log,
 });
 
 export { 

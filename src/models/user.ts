@@ -3,7 +3,9 @@ import { sequelize } from '../config';
 
 interface UserAttributes {
     id: string;
-    username: string;
+    roleId: number;
+    firstname: string;
+    lastname: string;
     email: string;
     password: string;
 };
@@ -22,7 +24,16 @@ const User = sequelize.define<UserInstance>('User', {
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    username: {
+    roleId: {
+        allowNull: true,
+        field: 'role_id',
+        type: DataTypes.INTEGER,
+    },
+    firstname: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    lastname: {
         allowNull: false,
         type: DataTypes.STRING,
     },

@@ -1,21 +1,20 @@
 import { Model, Optional, DataTypes } from 'sequelize';
 import { sequelize } from '../config';
 
-interface ProductAttributes {
+interface RoleAttributes {
     id: string;
     name: string;
     description: string;
-    isActive: boolean;
 };
 
-interface ProductCreationAttributes extends Optional<ProductAttributes, 'id' | 'description'> {}
+interface RoleCreationAttributes extends Optional<RoleAttributes, 'id' | 'description'> {}
 
-interface ProductInstance extends Model<ProductAttributes, ProductCreationAttributes>, ProductAttributes {
+interface RoleInstance extends Model<RoleAttributes, RoleCreationAttributes>, RoleAttributes {
     created_at?: Date;
     updated_at?: Date; 
 }
 
-const Product = sequelize.define<ProductInstance>('Product', {
+const Role = sequelize.define<RoleInstance>('Role', {
     id: {
         allowNull: true,
         autoIncrement: false,
@@ -30,14 +29,9 @@ const Product = sequelize.define<ProductInstance>('Product', {
         allowNull: true,
         type: DataTypes.STRING,
     },
-    isActive: {
-        allowNull: true,
-        field: 'is_active',
-        type: DataTypes.BOOLEAN,
-    }
 }, { 
     timestamps: true,
     underscored: true
 });
 
-export default Product;
+export default Role;
