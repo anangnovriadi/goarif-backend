@@ -26,6 +26,8 @@ export class UserController {
             }
 
             value.password = md5(value.password);
+            value.roleId = 1;
+            
             await User.create(value);
 
             const result = _.omit(value, ['password']);
@@ -54,7 +56,7 @@ export class UserController {
                     password: md5(value.password)
                 }
             });
-
+            
             if (!user) {
                 throw new ResponseError(400, "email or password is wrong");
             }

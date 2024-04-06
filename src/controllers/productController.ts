@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { Product } from "../models"; 
+import { Content } from "../models"; 
 import { ResponseError } from "../utils/errorResponse";
 import { productValidation } from "../validations/productValidation";
 
 export class ProductController {
     static async list(req: Request, res: Response, next: NextFunction) {
         try {
-            const products = await Product.findAll();
+            const products = await Content.findAll();
             return res.status(200).json({
                 message: "success",
                 data: products
@@ -18,7 +18,7 @@ export class ProductController {
 
     static async detail(req: Request, res: Response, next: NextFunction) {
         try {
-            const product = await Product.findOne({
+            const product = await Content.findOne({
                 where: {
                     id: req.params.id
                 }
@@ -45,7 +45,7 @@ export class ProductController {
                 throw new ResponseError(400, error?.details[0].message);
             }
 
-            await Product.create(value);
+            await Content.create(value);
 
             return res.status(201).json({
                 message: "success",

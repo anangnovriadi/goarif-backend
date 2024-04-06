@@ -2,8 +2,9 @@ import { Model, Optional, DataTypes } from 'sequelize';
 import { sequelize } from '../config';
 
 interface UserAttributes {
-    id: string;
+    id?: number;
     roleId: number;
+    username: string;
     firstname: string;
     lastname: string;
     email: string;
@@ -18,16 +19,14 @@ interface UserInstance extends Model<UserAttributes, UserCreationAttributes>, Us
 }
 
 const User = sequelize.define<UserInstance>('User', {
-    id: {
-        allowNull: true,
-        autoIncrement: false,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-    },
     roleId: {
         allowNull: true,
         field: 'role_id',
         type: DataTypes.INTEGER,
+    },
+    username: {
+        allowNull: false,
+        type: DataTypes.STRING,
     },
     firstname: {
         allowNull: false,

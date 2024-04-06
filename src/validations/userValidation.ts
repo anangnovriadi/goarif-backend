@@ -3,6 +3,8 @@ import { Request } from "express";
 
 export const registerValidation = (body: Request) => {
     let schema = Joi.object({
+        firstname: Joi.string().required(),
+        lastname: Joi.string().required(),
         username: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required(),

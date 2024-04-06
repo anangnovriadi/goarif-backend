@@ -1,7 +1,7 @@
 import User from './user';
-import Product from './product';
+import Content from './content';
 
 export {
     User,
-    Product
+    Content
 }
